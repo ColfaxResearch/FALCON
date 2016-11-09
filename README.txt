@@ -53,6 +53,7 @@ merged output from the previous layer.
 
 
 ****** BEFORE INSTALLATION ********
+
 -> For high performance on KNL with MCDRAM mode, Falcon uses the concept of Scratchpad memory 
    to work on,which is one time generated and used multiple times throughout the network if 
    there are multiple conv modules conneted back to back.
@@ -65,16 +66,20 @@ merged output from the previous layer.
 
 
 *********** USAGE *****************
-->falcon_init_lib(); //init falcon library, allocate scratch memory
-->fal_conv(M,image,irows,C,filter,K,batch,out);  // conv API
-->falcon_free_lib();  // free the scratch pad memory
+
+-> falcon_init_lib();                             //init falcon library, allocate scratch memory
+-> fal_conv(M,image,irows,C,filter,K,batch,out);  // conv API
+-> falcon_free_lib();                             // free up the scratch pad memory
+
 
 Refer vgg_winograd.c in the example/ for usage, and to run the example program
-> ./run.sh 0 
-> ./run.sh 1       ...for run and verify 
+
+> ./run.sh 0       ... to run 
+> ./run.sh 1       ... to run and verify 
 
 
 ********** INSTALLATION ***********
+
 > ./clean.sh
 >./install.sh
 
