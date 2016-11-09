@@ -1,5 +1,5 @@
 
-The link for the paper that explains the working of FALCON in detail can be found below
+The link to the paper that explains the working of FALCON in detail can be found below
 http://colfaxresearch.com/falcon-library/
 
 
