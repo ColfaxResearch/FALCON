@@ -1,3 +1,9 @@
+
+The link for the paper that explains the working of FALCON in detail can be found below
+http://colfaxresearch.com/falcon-library/
+
+
+
 IMAGE LAYOUT : Image is a 4D data structure, image[N][C][H][W], where H=W=irows.
                W is the inner most dimension with unit stride. Image data structure 
                is stored in a linear array I[N*channels*irows*irows].
