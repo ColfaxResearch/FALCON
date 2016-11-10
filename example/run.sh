@@ -1,3 +1,10 @@
+if [ "$#" -ne 1 ]; then
+    echo "Usage:"
+    echo "run.sh 0  ... to run"
+    echo "run.sh 1  ... to and verify"
+    exit;
+fi
+
 C=`nproc`
 line=`lscpu | grep "Thread(s) per core"`
 index=`echo $line | wc -w`
