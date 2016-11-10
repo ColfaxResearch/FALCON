@@ -1,1 +1,1 @@
-cmake -E make_directory build && cd build && cmake .. -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc && make && cp libfalcon.so ../lib && cp vgg_winograd ../example
+cmake -E make_directory build && cd build && CC=icc cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=on && make -j && mkdir -p lib && cp libfalcon.so ../lib

@@ -6,7 +6,7 @@
 #include <hbwmalloc.h>
 
 #include <assert.h>
-#include <falcon.h>
+#include "falcon.h"
 
 void direct_conv(float * D0, float * F, float * O, const int N, const int K, const int P, const int Q, const int C, const int R, const int S) {
     const int P_pad = P + 2; 

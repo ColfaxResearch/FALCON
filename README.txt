@@ -62,7 +62,7 @@ merged output from the previous layer.
    allocate max memory that will be used by the user
 -> By default these parameters are set w.r.t VGG-16 D network, which can be used as a reference 
    to understand these parameters
-
+-> install memkind-devel, intel c compiler
 
 
 *********** USAGE *****************

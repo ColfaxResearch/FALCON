@@ -18,7 +18,8 @@ void fal_conv(
 	      const int K, 
 	      const int N, 
 	      float* restrict out);
-
+void falcon_init_lib();
+void falcon_free_lib();
 // IMAGE LAYOUT : Image is a 4D data structure, image[N][C][H][W], where H=W=irows.
 //                W is the inner most dimension with unit stride. Image data structure is stored in a linear
 //                array I[N*channels*irows*irows].
