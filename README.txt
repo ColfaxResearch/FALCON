@@ -2,7 +2,13 @@
 The link to the paper that explains the working of FALCON in detail can be found below
 http://colfaxresearch.com/falcon-library/
 
-
+-------------------
+Major Dependencies:
+-------------------
+1) ICC compiler latest
+2) Intel MKL library
+3) Memkind library -> https://github.com/memkind/memkind
+--------------------------------------------------------
 
 IMAGE LAYOUT : Image is a 4D data structure, image[N][C][H][W], where H=W=irows.
                W is the inner most dimension with unit stride. Image data structure 
