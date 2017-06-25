@@ -56,8 +56,8 @@ static void get_tiles(const float* restrict image, const int ldi, const int irow
         
         // work on one image plane at a time, irrespective of the order
         for(i = 0; i < irows-2; i += 2){
-            #pragma unroll(4)            
-            for(j = 0; j < (irows-2); j += 2){
+            #pragma omp simd linear(j:2, tile_count:1)            
+            for(j = 0; j < (irows-2); j += 2, tile_count++){
                 tmp[0 :4] =data[(i+0)*ldi+j:4]; 
                 tmp[4 :4] =data[(i+1)*ldi+j:4]; 
                 tmp[8 :4] =data[(i+2)*ldi+j:4]; 
@@ -98,9 +98,6 @@ static void get_tiles(const float* restrict image, const int ldi, const int irow
                 otile[tile_count+13*STRIDE] = s[13]; 
                 otile[tile_count+14*STRIDE] = s[14]; 
                 otile[tile_count+15*STRIDE] = s[15]; 
-
-
-                tile_count++; 
             }
         }
     }
@@ -219,7 +216,8 @@ static void out_transform(const float* restrict d, const int K, const int ntiles
         int i, j;    
         // work on one output plane at a time, irrespective of the order
         for(i = 0; i < oH; i += 2){
-            for(j = 0; j < oW; j += 2){
+            #pragma omp simd linear(j:2, tile_offset:1)
+            for(j = 0; j < oW; j += 2, tile_offset++){
                 
                 // gather the 16 elements form C to form a tile
                 c1[0 ] = d[tile_offset+0 *STRIDE]; 
@@ -258,7 +256,6 @@ static void out_transform(const float* restrict d, const int K, const int ntiles
                 data[i*ldo+j+1]  =c2[1]; 
                 data[(i+1)*ldo+j] = c2[2]; 
                 data[(i+1)*ldo+j+1] = c2[3];     
-                tile_offset++; 
             }
         }
     }
